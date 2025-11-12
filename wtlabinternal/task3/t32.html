@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Personal Blog</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #f8f9fa;
+  }
+  header {
+    background: #0077b6;
+    color: white;
+    padding: 15px;
+    text-align: center;
+  }
+  nav {
+    background: #023e8a;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  nav a {
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+  }
+  nav a:hover {
+    background: #0096c7;
+  }
+  .container {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+  }
+  .post {
+    background: white;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  }
+  .post h2 {
+    color: #0077b6;
+  }
+  footer {
+    background: #023e8a;
+    color: white;
+    text-align: center;
+    padding: 10px;
+  }
+  @media (max-width: 600px) {
+    nav { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>my  Blog</h1>
+  <p>Welcome to my personal space 🌸</p>
+</header>
+
+<nav>
+  <a href="#">Home</a>
+  <a href="#">About</a>
+  <a href="#">Posts</a>
+  <a href="#">Contact</a>
+</nav>
+
+<div class="container">
+  <div class="post">
+    <h2>My First Blog Post</h2>
+    <p>Hello everyone! This is my first post. I’ll be sharing my thoughts, projects, and experiences here.</p>
+  </div>
+
+  <div class="post">
+    <h2>Web Development Journey</h2>
+    <p>Learning HTML, CSS, and JavaScript is fun! Building projects helps me understand how the web works.</p>
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 2025 your's Blog | All Rights Reserved</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h3>Payment Page</h3>
+<form onsubmit="return validatePay()">
+  Card Number: <input type="text" id="card"><br>
+  CVV: <input type="text" id="cvv"><br>
+  Amount: <input type="text" id="amt"><br>
+  <input type="submit" value="Pay Now">
+</form>
+
+<script>
+function validatePay() {
+  let c = document.getElementById("card").value;
+  let cvv = document.getElementById("cvv").value;
+  let amt = document.getElementById("amt").value;
+  if (c.length != 16 || isNaN(c)) {
+    alert("Enter valid 16-digit card number!");
+    return false;
+  }
+  if (cvv.length != 3 || isNaN(cvv)) {
+    alert("Enter valid 3-digit CVV!");
+    return false;
+  }
+  if (amt == "" || isNaN(amt)) {
+    alert("Enter valid amount!");
+    return false;
+  }
+  alert("Payment Successful!");
+  return true;
+}
+</script>
+</body>
+</html>

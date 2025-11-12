@@ -1,0 +1,68 @@
+import java.sql.*;import java.sql.*;
+
+public class DMLExample {
+    public static void main(String[] args) {
+        String url = "jdbc:mysql://localhost:3306/testdb";
+        String user = "root";       
+        String pass = "password"; 
+
+        try {
+
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            Connection con = DriverManager.getConnection(url, user, pass);
+            System.out.println("✅ Database connected successfully!\n");
+
+            String insertQuery = "INSERT INTO students (id, name, age) VALUES (?, ?, ?)";
+            PreparedStatement ps = con.prepareStatement(insertQuery);
+            ps.setInt(1, 1);
+            ps.setString(2, "John");
+            ps.setInt(3, 21);
+            ps.executeUpdate();
+            System.out.println("✅ Record inserted!");
+
+            String updateQuery = "UPDATE students SET age = ? WHERE id = ?";
+            PreparedStatement ps2 = con.prepareStatement(updateQuery);
+            ps2.setInt(1, 22);
+            ps2.setInt(2, 1);
+            int rows = ps2.executeUpdate();
+            if (rows > 0)
+                System.out.println("✅ Record updated successfully!");
+            else
+                System.out.println("⚠️ No record found to update!");
+
+            String deleteQuery = "DELETE FROM students WHERE id = ?";
+            PreparedStatement ps3 = con.prepareStatement(deleteQuery);
+            ps3.setInt(1, 1);
+            ps3.executeUpdate();
+            System.out.println("✅ Record deleted!");
+
+            CallableStatement cs = con.prepareCall("{call getDetails()}");
+            ResultSet rs = cs.executeQuery();
+            while (rs.next()) {
+                System.out.println("ID: " + rs.getInt("id") + " | Name: " + rs.getString("name"));
+            }
+
+            con.close();
+            System.out.println("\n✅ Connection closed.");
+
+        } catch (Exception e) {
+            System.out.println("❌ Error: " + e.getMessage());
+        }
+    }
+}
+
+//database --> run this in my sql 
+
+CREATE TABLE students (
+  id INT PRIMARY KEY,
+  name VARCHAR(50),
+  age INT
+);
+
+DELIMITER //
+CREATE PROCEDURE getDetails()
+BEGIN
+  SELECT id, name FROM students;
+END //
+DELIMITER ;

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Shopping Cart Example</title>
+</head>
+<body>
+  <h3>Shopping Cart (push, pop, length Example)</h3>
+  <script>
+    // a) Create an empty array
+    let cart = [];
+
+    // b) Add 3 product objects using push()
+    cart.push({name: "Book", price: 200});
+    cart.push({name: "Pen", price: 20});
+    cart.push({name: "Bag", price: 500});
+
+    document.write("<b>Cart after adding products:</b><br>");
+    cart.forEach(p => document.write(p.name + " - Rs." + p.price + "<br>"));
+
+    // c) Remove last product using pop()
+    let removed = cart.pop();
+    document.write("<br><b>Removed product:</b> " + removed.name + "<br>");
+
+    // d) Print updated cart and number of items
+    document.write("<br><b>Updated Cart:</b><br>");
+    cart.forEach(p => document.write(p.name + " - Rs." + p.price + "<br>"));
+
+    document.write("<br><b>Total items in cart:</b> " + cart.length);
+  </script>
+</body>
+</html>

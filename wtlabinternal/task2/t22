@@ -1,0 +1,29 @@
+//t2b
+
+//sample xml 
+
+<?xml version="1.0" encoding="UTF-8"?>
+<person>
+    <name>John Doe</name>
+    <age>25</age>
+    <email>john@example.com</email>
+    <phone>9876543210</phone>
+</person>
+
+//sample dtd 
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE person [
+  <!ELEMENT person (name, age, email, phone)>
+  <!ELEMENT name (#PCDATA)>
+  <!ELEMENT age (#PCDATA)>
+  <!ELEMENT email (#PCDATA)>
+  <!ELEMENT phone (#PCDATA)>
+]>
+<person>
+    <name>John Doe</name>
+    <age>25</age>
+    <email>john@example.com</email>
+    <phone>9876543210</phone>
+</person>
+ 

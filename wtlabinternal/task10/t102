@@ -1,0 +1,74 @@
+//10.b
+//display the Book information 
+
+//books.xml
+<?xml version="1.0" encoding="UTF-8"?>
+<bookstore>
+    <book>
+        <title>Introduction to XML</title>
+        <author>John Doe</author>
+        <isbn>978-0-123456-47-2</isbn>
+        <publisher>Example Press</publisher>
+        <edition>3rd</edition>
+        <price>39.99</price>
+    </book>
+    <book>
+        <title>Advanced XML Concepts</title>
+        <author>Jane Smith</author>
+        <isbn>978-0-765432-10-5</isbn>
+        <publisher>Tech Books Publishing</publisher>
+        <edition>1st</edition>
+        <price>45.00</price>
+    </book>
+</bookstore>
+
+
+//books.xsl
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+    <xsl:output method="html" indent="yes"/>
+    <xsl:template match="/">
+        <html>
+            <head>
+                <title>Book Information</title>
+                <style>
+                    table {
+                        width: 100%;
+                        border-collapse: collapse;
+                    }
+                    th, td {
+                        padding: 8px;
+                        text-align: left;
+                        border: 1px solid #ddd;
+                    }
+                    th {
+                        background-color: #f2f2f2;
+                    }
+                </style>
+            </head>
+            <body>
+                <h2>Book Information</h2>
+                <table>
+                    <tr>
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th>ISBN</th>
+                        <th>Publisher</th>
+                        <th>Edition</th>
+                        <th>Price</th>
+                    </tr>
+                    <xsl:for-each select="bookstore/book">
+                        <tr>
+                            <td><xsl:value-of select="title"/></td>
+                            <td><xsl:value-of select="author"/></td>
+                            <td><xsl:value-of select="isbn"/></td>
+                            <td><xsl:value-of select="publisher"/></td>
+                            <td><xsl:value-of select="edition"/></td>
+                            <td><xsl:value-of select="price"/></td>
+                        </tr>
+                    </xsl:for-each>
+                </table>
+            </body>
+        </html>
+    </xsl:template>
+</xsl:stylesheet>

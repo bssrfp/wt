@@ -1,0 +1,39 @@
+t10 A
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Addition</title>
+</head>
+<body>
+
+<form method="post">
+    <h3>Enter 1st number</h3>
+    <input type="text" name="num1"><br>
+
+    <h3>Enter 2nd number</h3>
+    <input type="text" name="num2"><br><br>
+
+    <input type="submit" value="Add">
+</form>
+
+<%
+    int s = 0;
+    String num1 = request.getParameter("num1");
+    String num2 = request.getParameter("num2");
+
+    if(num1 != null && num2 != null && !num1.equals("") && !num2.equals("")){
+        int n1 = Integer.parseInt(num1);
+        int n2 = Integer.parseInt(num2);
+        s = n1 + n2;
+%>
+        <h3>Sum = <%= s %></h3>
+<%
+    }
+%>
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+Apache Tomcat v10 or higher
+
+Eclipse automatically includes jakarta.servlet-api.jar.
+
+Step 2: Create Project
+
+Go to File → New → Dynamic Web Project
+Name it: ConfigContextDemo
+
+Select Apache Tomcat as the runtime.
+
+Finish the setup.
+
+Step 3: Add Servlet
+
+Go to Java Resources → src
+
+Create a new package (optional) like demo
+
+Create file → ConfigContextDemo.java
+
+Paste the code above.
+
+
+import java.io.*;
+import jakarta.servlet.*;
+import jakarta.servlet.http.*;
+import jakarta.servlet.annotation.*;
+
+@WebListener
+class AppContextListener implements ServletContextListener {
+    public void contextInitialized(ServletContextEvent sce) {
+        ServletContext context = sce.getServletContext();
+        context.setInitParameter("companyName", "Tech World Pvt Ltd");
+    }
+}
+
+@WebServlet(
+    urlPatterns = "/showDetails",
+    initParams = {
+        @WebInitParam(name = "adminEmail", value = "admin@techworld.com")
+    }
+)
+public class ConfigContextDemo extends HttpServlet {
+    public void doGet(HttpServletRequest req, HttpServletResponse res)
+            throws ServletException, IOException {
+
+        res.setContentType("text/html");
+        PrintWriter out = res.getWriter();
+        ServletConfig config = getServletConfig();
+        ServletContext context = getServletContext();
+
+        String email = config.getInitParameter("adminEmail");
+        String company = context.getInitParameter("companyName");
+
+        out.println("<html><body>");
+        out.println("<h2>Servlet Config and Context Example</h2>");
+        out.println("<p><b>Admin Email:</b> " + email + "</p>");
+        out.println("<p><b>Company Name:</b> " + company + "</p>");
+        out.println("</body></html>");
+    }
+}

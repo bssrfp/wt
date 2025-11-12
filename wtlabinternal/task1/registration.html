@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h3>Registration Form</h3>
+<form onsubmit="return validateReg()">
+  Name: <input type="text" id="name"><br>
+  Email: <input type="text" id="email"><br>
+  Password: <input type="password" id="pass"><br>
+  <input type="submit" value="Register">
+</form>
+
+<script>
+function validateReg() {
+  let name = document.getElementById("name").value;
+  let email = document.getElementById("email").value;
+  let pass = document.getElementById("pass").value;
+  if (name == "" || email == "" || pass == "") {
+    alert("All fields are required!");
+    return false;
+  }
+  if (!email.includes("@")) {
+    alert("Enter valid email!");
+    return false;
+  }
+  if (pass.length < 6) {
+    alert("Password must be at least 6 characters!");
+    return false;
+  }
+  alert("Registration Successful!");
+  return true;
+}
+</script>
+</body>
+</html>

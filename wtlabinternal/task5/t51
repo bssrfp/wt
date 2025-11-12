@@ -1,0 +1,63 @@
+//t5a
+import java.sql.*;
+
+public class ScrollableUpdatableRS {
+    public static void main(String[] args) {
+        String url = "jdbc:mysql://localhost:3306/testdb";
+        String user = "root";
+        String pass = "password";
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection(url, user, pass);
+            System.out.println("✅ Database connected successfully!\n");
+
+        
+            Statement stmt = con.createStatement(
+                    ResultSet.TYPE_SCROLL_INSENSITIVE,
+                    ResultSet.CONCUR_UPDATABLE
+            );
+
+            ResultSet rs = stmt.executeQuery("SELECT id, name, age FROM students");
+
+            if (rs.first()) {
+                System.out.println("First Row: ID=" + rs.getInt("id") + ", Name=" + rs.getString("name"));
+            }
+
+            if (rs.last()) {
+                System.out.println("Last Row: ID=" + rs.getInt("id") + ", Name=" + rs.getString("name"));
+            }
+            rs.moveToInsertRow();
+            rs.updateInt("id", 5);
+            rs.updateString("name", "Alice");
+            rs.updateInt("age", 23);
+            rs.insertRow();
+            System.out.println("New row inserted (Alice)");
+
+            rs.first();
+            rs.updateInt("age", rs.getInt("age") + 1);
+            rs.updateRow();
+            System.out.println("First row age updated");
+
+          
+            rs.last();
+            rs.deleteRow();
+            System.out.println("Last row deleted");
+
+           
+            System.out.println("\nAll remaining records:");
+            rs.beforeFirst(); 
+            while (rs.next()) {
+                System.out.println("ID=" + rs.getInt("id") + ", Name=" + rs.getString("name") + ", Age=" + rs.getInt("age"));
+            }
+
+            rs.close();
+            stmt.close();
+            con.close();
+            System.out.println("\nConnection closed.");
+
+        } catch (Exception e) {
+            System.out.println(" Error: " + e.getMessage());
+        }
+    }
+}

@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Responsive Photo Gallery</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background: #f8f9fa;
+  }
+
+  h2 {
+    text-align: center;
+    color: #0077b6;
+  }
+
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 10px;
+  }
+
+  .gallery img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+
+  @media (max-width: 900px) {
+    .gallery {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 600px) {
+    .gallery {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+</head>
+<body>
+
+<h2>My Photo Gallery</h2>
+
+<div class="gallery">
+  <img src="https://via.placeholder.com/300x200?text=Photo+1" alt="Photo 1">
+  <img src="https://via.placeholder.com/300x200?text=Photo+2" alt="Photo 2">
+  <img src="https://via.placeholder.com/300x200?text=Photo+3" alt="Photo 3">
+  <img src="https://via.placeholder.com/300x200?text=Photo+4" alt="Photo 4">
+  <img src="https://via.placeholder.com/300x200?text=Photo+5" alt="Photo 5">
+  <img src="https://via.placeholder.com/300x200?text=Photo+6" alt="Photo 6">
+</div>
+
+</body>
+</html>

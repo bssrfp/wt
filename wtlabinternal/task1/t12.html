@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Box Model Example</title>
+<style>
+  .box {
+    width: 200px;              /* content width */
+    padding: 20px;             /* space inside border */
+    border: 5px solid blue;    /* border thickness */
+    margin: 50px;              /* space outside the box */
+    background-color: lightyellow;
+  }
+
+  .info {
+    font-family: Arial;
+    background: #f0f0f0;
+    padding: 10px;
+    margin-top: 20px;
+    border-left: 4px solid green;
+  }
+</style>
+</head>
+<body>
+  <h2>CSS Box Model Demonstration</h2>
+
+  <div class="box">
+    This is the content area.<br>
+    Width = 200px<br>
+    Padding = 20px<br>
+    Border = 5px<br>
+    Margin = 15px
+  </div>
+
+  <div class="info">
+    <b>Total size = content + padding + border + margin</b><br>
+    = 200 + (20×2) + (5×2) + (15×2) = <b>280px wide + 80px tall (approx)</b>
+  </div>
+
+  <p>👉 Try changing the <b>padding</b>, <b>border</b>, or <b>margin</b> in the CSS above to see how the total box size changes.</p>
+</body>
+</html>
